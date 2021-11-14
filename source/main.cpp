@@ -6,7 +6,7 @@ int main()
 {
     RenderD7::Init::Main();
     tx.Load("romfs:/gfx/tx.t3x");
-    splash.FromSheet(&tx, 3);
+    splash.FromSheet(&tx, 5);
     while(RenderD7::MainLoop())
     {
         if (d7_hDown & KEY_B) RenderD7::ExitApp();
