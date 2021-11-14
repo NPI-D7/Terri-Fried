@@ -254,7 +254,7 @@ namespace RenderD7
     };
     struct rgba
     {
-        int r, g, b, a
+        int r, g, b, a;
     };
     class Console
     {
