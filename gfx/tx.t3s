@@ -1,0 +1,8 @@
+--atlas -f etc1 -z auto
+egg.png
+coin.png
+lava.png
+logo.png
+platform.png
+scorebox.png
+splash_egg.png
