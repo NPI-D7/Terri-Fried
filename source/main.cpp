@@ -1,19 +1,37 @@
 #include <renderd7.hpp>
 
+//Spritesheet
 RenderD7::Sheet tx;
-RenderD7::Sprite splash;
+//Sprites
+RenderD7::Sprite egg;
+RenderD7::Sprite coin;
+RenderD7::Sprite lava;
+RenderD7::Sprite logo;
+RenderD7::Sprite platform;
+RenderD7::Sprite scorebox;
+RenderD7::Sprite splash_egg;
+
 int main()
 {
     RenderD7::Init::Main();
+    //Load Spritesheet
     tx.Load("romfs:/gfx/tx.t3x");
-    splash.FromSheet(&tx, 5);
+    //Load Sprites
+    egg.FromSheet(&tx, 0);
+    coin.FromSheet(&tx, 1);
+    lava.FromSheet(&tx, 2);
+    logo.FromSheet(&tx, 3);
+    platform.FromSheet(&tx, 4);
+    scorebox.FromSheet(&tx, 5);
+    splash_egg.FromSheet(&tx, 6);
+
     while(RenderD7::MainLoop())
     {
         if (d7_hDown & KEY_B) RenderD7::ExitApp();
+
         RenderD7::OnScreen(Top);
         
-        RenderD7::DrawRect(0, 0, 20, 20, C2D_Color32(255, 255 , 255, 255));
-        splash.Draw();
+        egg.Draw();
         C3D_FrameEnd(0);
     }
 
