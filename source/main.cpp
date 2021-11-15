@@ -1,5 +1,5 @@
 #include <renderd7.hpp>
-
+#include <time.h>
 //Spritesheet
 RenderD7::Sheet tx;
 //Sprites
@@ -16,6 +16,8 @@ int screenheight = 240;
 int main()
 {
     RenderD7::Init::Main();
+    srand(time(NULL));
+    double timer = 0;
     //Load Spritesheet
     tx.Load("romfs:/gfx/tx.t3x");
     //Load Sprites
@@ -46,6 +48,8 @@ int main()
         egg.Draw();
         lava.Draw();
         C3D_FrameEnd(0);
+        lavaY = screenHeight - 43 - sin(timer) * 5;
+        timer += 0.05;
     }
 
     RenderD7::Exit::Main();
