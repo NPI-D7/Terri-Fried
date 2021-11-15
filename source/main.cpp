@@ -33,6 +33,8 @@ int main()
     scorebox.SetScale(0.5, 0.5);
     splash_egg.SetScale(0.5, 0.5);
 
+    double lavaY = screenHeight - 32/2;
+    lava.SetPos(0, lavaY);
     while(RenderD7::MainLoop())
     {
         if (d7_hDown & KEY_B) RenderD7::ExitApp();
@@ -40,6 +42,7 @@ int main()
         RenderD7::OnScreen(Top);
         
         egg.Draw();
+        lava.Draw();
         C3D_FrameEnd(0);
     }
 
