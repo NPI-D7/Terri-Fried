@@ -12,6 +12,7 @@ RenderD7::Sprite scorebox;
 RenderD7::Sprite splash_egg;
 
 int screenheight = 240;
+int screenwidth = 400;
 
 int main()
 {
@@ -44,7 +45,7 @@ int main()
         if (d7_hDown & KEY_B) RenderD7::ExitApp();
 
         RenderD7::OnScreen(Top);
-        
+        RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
         egg.Draw();
         lava.Draw();
         C3D_FrameEnd(0);
