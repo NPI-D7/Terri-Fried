@@ -8,18 +8,18 @@ class Game : public RenderD7::Scene
     void Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch) override;
     private:
     //Spritesheet
-    RenderD7::Sheet tx;
+    inline RenderD7::Sheet tx;
     //Sprites
-    RenderD7::Sprite egg;
-    RenderD7::Sprite coin;
-    RenderD7::Sprite lava;
-    RenderD7::Sprite logo;
-    RenderD7::Sprite platform;
-    RenderD7::Sprite scorebox;
-    RenderD7::Sprite splash_egg;
+    inline RenderD7::Sprite egg;
+    inline RenderD7::Sprite coin;
+    inline RenderD7::Sprite lava;
+    inline RenderD7::Sprite logo;
+    inline RenderD7::Sprite platform;
+    inline RenderD7::Sprite scorebox;
+    inline RenderD7::Sprite splash_egg;
 
-    int screenheight = 240;
-    int screenwidth = 400;
-    double timer = 0;
-    double lavaY = screenheight - 32/2;
+    inline int screenheight = 240;
+    inline int screenwidth = 400;
+    inline double timer = 0;
+    inline double lavaY = screenheight - 32/2;
 };
