@@ -11,7 +11,7 @@ RenderD7::Sprite platform;
 RenderD7::Sprite scorebox;
 RenderD7::Sprite splash_egg;
 
-int screenheight = 240
+int screenheight = 240;
 
 int main()
 {
