@@ -38,7 +38,7 @@ int main()
     splash_egg.SetScale(0.5, 0.5);
 
     double lavaY = screenheight - 32/2;
-    lava.SetPos(0, lavaY);
+    
     while(RenderD7::MainLoop())
     {
         if (d7_hDown & KEY_B) RenderD7::ExitApp();
@@ -50,6 +50,7 @@ int main()
         C3D_FrameEnd(0);
         lavaY = screenheight - 43/2 - sin(timer) * 5;
         timer += 0.05;
+        lava.SetPos(0, lavaY);
     }
 
     RenderD7::Exit::Main();
