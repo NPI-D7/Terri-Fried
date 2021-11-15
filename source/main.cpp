@@ -11,6 +11,8 @@ RenderD7::Sprite platform;
 RenderD7::Sprite scorebox;
 RenderD7::Sprite splash_egg;
 
+int screenheight = 240
+
 int main()
 {
     RenderD7::Init::Main();
@@ -33,7 +35,7 @@ int main()
     scorebox.SetScale(0.5, 0.5);
     splash_egg.SetScale(0.5, 0.5);
 
-    double lavaY = screenHeight - 32/2;
+    double lavaY = screenheight - 32/2;
     lava.SetPos(0, lavaY);
     while(RenderD7::MainLoop())
     {
