@@ -24,6 +24,14 @@ int main()
     platform.FromSheet(&tx, 4);
     scorebox.FromSheet(&tx, 5);
     splash_egg.FromSheet(&tx, 6);
+    //Scale the Sprites
+    egg.SetScale(0.5, 0.5);
+    coin.SetScale(0.5, 0.5);
+    lava.SetScale(0.5, 0.5);
+    logo.SetScale(0.5, 0.5);
+    platform.SetScale(0.5, 0.5);
+    scorebox.egg.SetScale(0.5, 0.5);
+    splash_egg.SetScale(0.5, 0.5);
 
     while(RenderD7::MainLoop())
     {
