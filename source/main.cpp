@@ -30,7 +30,7 @@ int main()
     lava.SetScale(0.5, 0.5);
     logo.SetScale(0.5, 0.5);
     platform.SetScale(0.5, 0.5);
-    scorebox.egg.SetScale(0.5, 0.5);
+    scorebox.SetScale(0.5, 0.5);
     splash_egg.SetScale(0.5, 0.5);
 
     while(RenderD7::MainLoop())
