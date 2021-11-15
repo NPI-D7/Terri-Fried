@@ -48,8 +48,8 @@ int main()
         egg.Draw();
         lava.Draw();
         C3D_FrameEnd(0);
-        lavaY = screenheight - 43/4 - sin(timer) * 5;
-        timer += 0.05;
+        lavaY = screenheight - 43 - sin(timer) * 5;
+        timer += 0.05/2;
         lava.SetPos(0, lavaY);
     }
 
