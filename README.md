@@ -1,2 +1,2 @@
 # Terri-Fried
-A Game created by @Polymars
+A Game created by @PolymarsDev
