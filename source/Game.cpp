@@ -3,37 +3,37 @@
 Game::Game()
 {
     //Load Spritesheet
-    tx.Load("romfs:/gfx/tx.t3x");
+    this->tx.Load("romfs:/gfx/tx.t3x");
     //Load Sprites
-    egg.FromSheet(&tx, 0);
-    coin.FromSheet(&tx, 1);
-    lava.FromSheet(&tx, 2);
-    logo.FromSheet(&tx, 3);
-    platform.FromSheet(&tx, 4);
-    scorebox.FromSheet(&tx, 5);
-    splash_egg.FromSheet(&tx, 6);
+    this->egg.FromSheet(&tx, 0);
+    this->coin.FromSheet(&tx, 1);
+    this->lava.FromSheet(&tx, 2);
+    this->logo.FromSheet(&tx, 3);
+    this->platform.FromSheet(&tx, 4);
+    this->scorebox.FromSheet(&tx, 5);
+    this->splash_egg.FromSheet(&tx, 6);
     //Scale the Sprites
-    egg.SetScale(0.5, 0.5);
-    coin.SetScale(0.5, 0.5);
-    lava.SetScale(0.5, 0.5);
-    logo.SetScale(0.5, 0.5);
-    platform.SetScale(0.5, 0.5);
-    scorebox.SetScale(0.5, 0.5);
-    splash_egg.SetScale(0.5, 0.5);
+    this->egg.SetScale(0.5, 0.5);
+    this->coin.SetScale(0.5, 0.5);
+    this->lava.SetScale(0.5, 0.5);
+    this->logo.SetScale(0.5, 0.5);
+    this->platform.SetScale(0.5, 0.5);
+    this->scorebox.SetScale(0.5, 0.5);
+    this->splash_egg.SetScale(0.5, 0.5);
 
 }
 
 void Game::Draw(void) const
 {
     RenderD7::OnScreen(Top);
-    RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
-    egg.Draw();
-    lava.Draw();
+    RenderD7::DrawRect(0, 0, this->screenwidth, this->screenheight, RenderD7::Color::Hex("#ECE2DE"));
+    this->egg.Draw();
+    this->lava.Draw();
 }
 
 void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
 {
-    lavaY = screenheight - 16 - sin(timer) * 5;
-    timer += 0.05/2;
-    lava.SetPos(0, lavaY);
+    this->lavaY = screenheight - 16 - sin(this->timer) * 5;
+    this->timer += 0.05/2;
+    this->lava.SetPos(0, lavaY);
 }
