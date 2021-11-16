@@ -37,5 +37,4 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
 {
     lavaY = screenheight - 16 - sin(timer) * 5;
     timer += 0.05/2;
-    lava.SetPos(0, lavaY);
 }
