@@ -38,8 +38,8 @@ void Game::Draw(void) const
     RenderD7::DrawImageFromSheet(&tx, 0, player.getX(), player.getY(), 0.5, 0.5);
     for (int i = 0; i < 4; i++)
     {
-        RenderD7::DrawImageFromSheet(&tx, 4, platform[i].getX(), platform[i].getX(), 0.5, 0.5);
-        if (platform[i].getHasCoin()) RenderD7::DrawImageFromSheet(&tx, 1, platform[i].getCoinX(), platform[i].getCoinX(), 0.5, 0.5);
+        RenderD7::DrawImageFromSheet(&tx, 4, platforms[i].getX(), platforms[i].getX(), 0.5, 0.5);
+        if (platforms[i].getHasCoin()) RenderD7::DrawImageFromSheet(&tx, 1, platforms[i].getCoinX(), platforms[i].getCoinX(), 0.5, 0.5);
     }
     RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
     //RenderD7::DrawText(5, lavaY, 0.7f, RenderD7::Color::Hex("#FFFFFF"), "Test");
