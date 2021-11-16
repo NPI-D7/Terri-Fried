@@ -55,7 +55,7 @@ int Platform::getCoinY() {
 }
 
 void Platform::updatePosition() {
-    y+=1;
+    y+=1/2;
     
     coinX = x + width/2 - (24/2)/2;
     coinY = y - 24/2 - 5;
