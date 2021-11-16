@@ -157,7 +157,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
          if(player.isOnPlatform()) player.setY(player.getY() - 1);
          int velocityX = touch.px - mouseDownX;
          int velocityY = touch.py - mouseDownY;
-         player.setVelocity((double)velocityX*.04, (double)velocityY*.04);
+         player.setVelocity((double)velocityX*.08, (double)velocityY*.08);
     }
     if (d7_hHeld & KEY_TOUCH && player.isOnGround())
     {
