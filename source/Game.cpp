@@ -1,15 +1,15 @@
 #include "Game.hpp"
 
 //Spritesheet
-    static RenderD7::Sheet tx;
+    RenderD7::Sheet tx;
     //Sprites
-    static RenderD7::Sprite egg;
-    static RenderD7::Sprite coin;
-    static RenderD7::Sprite lava;
-    static RenderD7::Sprite logo;
-    static RenderD7::Sprite platform;
-    static RenderD7::Sprite scorebox;
-    static RenderD7::Sprite splash_egg;
+    RenderD7::Sprite egg;
+    RenderD7::Sprite coin;
+    RenderD7::Sprite lava;
+    RenderD7::Sprite logo;
+    RenderD7::Sprite platform;
+    RenderD7::Sprite scorebox;
+    RenderD7::Sprite splash_egg;
 
     int screenheight = 240;
     int screenwidth = 400;
