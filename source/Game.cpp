@@ -21,6 +21,8 @@ RenderD7::Sheet tx;
 */
 int screenheight = 240;
 int screenwidth = 400;
+int mouseDownX = 0;
+int mouseDownY = 0;
 double timer = 0;
 double lavaY = screenheight - 32/2;
 
@@ -143,5 +145,18 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     }
     if (player.getY() > screenheight) {
         resetGame();
+    }
+    if (hDown & KEY_TOUCH)
+    {
+         mouseDownX = touch.px;
+         mouseDownY = touch.py;
+    }
+    int velocityX = touch.px - mouseDownX;
+    int velocityY = touch.py - mouseDownY;
+    if (hUp & KEY_TOUCH)
+    {
+         if(player.isOnPlatform())
+         player.setY(player.getY() - 1);
+         player.setVelocity((double)velocityX*.04, (double)velocityY*.04);
     }
 }
