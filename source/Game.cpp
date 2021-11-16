@@ -5,7 +5,7 @@
 const double pi = 3.1415926535897;
 const int gravity = 1;
 
-Platform platforms[4] = {{0}, {1}, {2}, {3}};
+Platform platforms[5] = {{0}, {1}, {2}, {3}, {4}};
 Player player(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2, platforms[0].getY() - player.getHeight(), 26/2, 32/2);
 //Spritesheet
 RenderD7::Sheet tx;
@@ -27,7 +27,7 @@ double lavaY = screenheight - 32/2;
 void checkPlayerCollision() {
     bool onPlatform = false;
     
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         if (platforms[i].getHasCoin() && player.getX() + player.getWidth() - 3 > platforms[i].getCoinX() && player.getX() + 3 < platforms[i].getCoinX() + 24/2 && player.getY() + player.getHeight() - 3 > platforms[i].getCoinY() && player.getY() + 3 < platforms[i].getCoinY() + 24/2) {
             //addScore(1);
             platforms[i].setHasCoin(false);
@@ -61,7 +61,7 @@ void Game::Draw(void) const
     RenderD7::OnScreen(Top);
     RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
     RenderD7::DrawImageFromSheet(&tx, 0, player.getX(), player.getY(), 0.5, 0.5);
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
         RenderD7::DrawImageFromSheet(&tx, 4, platforms[i].getX(), platforms[i].getY(), 0.5, 0.5);
         if (platforms[i].getHasCoin()) RenderD7::DrawImageFromSheet(&tx, 1, platforms[i].getCoinX(), platforms[i].getCoinY(), 0.5, 0.5);
@@ -76,7 +76,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     timer += 0.05/2;
     checkPlayerCollision();
     player.updatePosition();
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         platforms[i].updatePosition();
     }
 }
