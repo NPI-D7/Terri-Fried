@@ -24,6 +24,67 @@ int screenwidth = 400;
 double timer = 0;
 double lavaY = screenheight - 32/2;
 
+int LoadHighScore() {
+    FILE *scorefile = fopen("sdmc:/config/terri-fried-score.bin", "rb");
+    
+    if(!scorefile)
+        return 0;
+    
+    int ret;
+    fread(&ret, sizeof(int), 1, scorefile);
+    fclose(scorefile);
+    
+    return ret;
+}
+
+void SaveHighScore(int val) {
+    FILE *scorefile = fopen("sdmc:/config/terri-fried-score.bin", "wb");
+    
+    fwrite(&val, sizeof(int), 1, scorefile);
+    fclose(scorefile);
+}
+
+int scoreInt = 0;
+int highscoreInt = LoadHighScore();
+char score[32];
+char highscore[32];
+
+bool titleScreen = true;
+bool playCoinFX = false;
+
+void addScore(int amount) {
+    scoreInt += amount;
+    
+    if (scoreInt < 10)
+        sprintf(score, "00%d", scoreInt);
+    else if (scoreInt < 100)
+        sprintf(score, "0%d", scoreInt);
+    else
+        sprintf(score, "%d", scoreInt);
+    
+    if (scoreInt > highscoreInt) {
+        highscoreInt = scoreInt;
+        sprintf(highscore, "BEST: %d", highscoreInt);
+    }
+}
+
+void resetScore() {
+    scoreInt = 0;
+    sprintf(score, "00%d", scoreInt);
+    SaveHighScore(highscoreInt);
+}
+
+void resetGame() {
+    resetScore();
+    
+    for (int i = 0; i < 5; i++)
+        platforms[i] = Platform(i);
+    
+    player.setVelocity(0, 0);
+    player.setX(platforms[0].getX() + platforms[0].getWidth()/2 - 26/2);
+    player.setY(platforms[0].getY() - player.getHeight());
+}
+
 void checkPlayerCollision() {
     bool onPlatform = false;
     
@@ -78,5 +139,8 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     player.updatePosition();
     for (int i = 0; i < 5; i++) {
         platforms[i].updatePosition();
+    }
+    if (player.getY() > screenHeight) {
+        resetGame();
     }
 }
