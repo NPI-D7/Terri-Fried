@@ -5,11 +5,11 @@ const int screenWidth = 400;
 const int screenHeight = 240;
 
 Platform::Platform(int index) {
-    width = 100;
-    height = 32;
+    width = 100/2;
+    height = 32/2;
     
-    x = rand()% 660 + 20;
-    y = 0 - height - (index * 100);
+    x = rand()% 660/2 + 20/2;
+    y = 0 - height - (index * 100/2);
     
     int coinInt = rand()% 4;
     
@@ -18,8 +18,8 @@ Platform::Platform(int index) {
     else
         hasCoin = true;
     
-    coinX = x + width/2 - 24/2;
-    coinY = y - 24 - 5;
+    coinX = x + width/2 - (24/2)/2;
+    coinY = y - 24/2 - 5;
 }
 
 double Platform::getX() {
@@ -57,11 +57,11 @@ int Platform::getCoinY() {
 void Platform::updatePosition() {
     y+=1;
     
-    coinX = x + width/2 - 24/2;
-    coinY = y - 24 - 5;
+    coinX = x + width/2 - (24/2)/2;
+    coinY = y - 24/2 - 5;
     
     if (y > screenHeight) {
-        x = rand()% 660 + 20;
+        x = rand()% 660/2 + 20/2;
         y = 0 - height;
         
         int coinInt = rand()% 4;
