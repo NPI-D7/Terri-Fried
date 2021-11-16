@@ -3,14 +3,15 @@
 //Spritesheet
 RenderD7::Sheet tx;
 //Sprites
-/"Load Sprites
+/*Load Sprites
     egg.FromSheet(&tx, 0);
     coin.FromSheet(&tx, 1);
     lava.FromSheet(&tx, 2);
     logo.FromSheet(&tx, 3);
     platform.FromSheet(&tx, 4);
     scorebox.FromSheet(&tx, 5);
-    splash_egg.FromSheet(&tx, 6);*/
+    splash_egg.FromSheet(&tx, 6);
+*/
 int screenheight = 240;
 int screenwidth = 400;
 double timer = 0;
