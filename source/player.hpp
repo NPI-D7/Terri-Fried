@@ -29,4 +29,3 @@ public:
     Vector2 getVelocity();
     void updatePosition();
 };
-#endif
