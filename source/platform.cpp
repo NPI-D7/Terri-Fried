@@ -1,4 +1,4 @@
-#include "platform.h"
+#include "platform.hpp"
 #include <math.h>
 
 const int screenWidth = 400;
