@@ -146,14 +146,14 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     if (player.getY() > screenheight) {
         resetGame();
     }
-    if (hDown & KEY_TOUCH)
+    if (hDown & KEY_TOUCH && player.isOnGround())
     {
          mouseDownX = touch.px;
          mouseDownY = touch.py;
     }
     int velocityX = touch.px - mouseDownX;
     int velocityY = touch.py - mouseDownY;
-    if (hUp & KEY_TOUCH)
+    if (hUp & KEY_TOUCH && player.isOnGround())
     {
          if(player.isOnPlatform())
          player.setY(player.getY() - 1);
