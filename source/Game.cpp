@@ -25,7 +25,7 @@ int mouseDownX = 0;
 int mouseDownY = 0;
 double timer = 0;
 double lavaY = screenheight - 32/2;
-
+bool firstTime = true;
 int LoadHighScore() {
     FILE *scorefile = fopen("sdmc:/config/terri-fried-score.bin", "rb");
     
@@ -154,10 +154,16 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     
     if (hUp & KEY_TOUCH && player.isOnGround())
     {
-         if(player.isOnPlatform()) player.setY(player.getY() - 1);
-         int velocityX = touch.px - mouseDownX;
-         int velocityY = touch.py - mouseDownY;
-         player.setVelocity((double)velocityX*.08, (double)velocityY*.08);
+         if (firstTime)
+         {
+              firstTime = false;
+         }
+         else {
+             if(player.isOnPlatform()) player.setY(player.getY() - 1);
+             int velocityX = touch.px - mouseDownX;
+             int velocityY = touch.py - mouseDownY;
+             player.setVelocity((double)velocityX*.08, (double)velocityY*.08);
+         } 
     }
     if (d7_hHeld & KEY_TOUCH && player.isOnGround())
     {
