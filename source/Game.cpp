@@ -164,8 +164,8 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
                     RenderD7::Color::Hex("#EDE4DE"),
-                    mouse_x + (player.getX() - mouseDownX) + (player.getWidth()/2),
-                    mouse_y + (player.getY() - mouseDownY) + (player.getHeight()/2),
+                    touch.px + (player.getX() - mouseDownX) + (player.getWidth()/2),
+                    touch.py + (player.getY() - mouseDownY) + (player.getHeight()/2),
                     RenderD7::Color::Hex("#EDE4DE"),
                     1,
                     1
