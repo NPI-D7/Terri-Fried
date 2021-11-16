@@ -82,7 +82,7 @@ void resetGame() {
     
     player.setVelocity(0, 0);
     player.setX(platforms[0].getX() + platforms[0].getWidth()/2 - 26/2);
-    player.setY(platforms[0].getY() - player.getheight());
+    player.setY(platforms[0].getY() - player.getHeight());
 }
 
 void checkPlayerCollision() {
@@ -140,7 +140,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     for (int i = 0; i < 5; i++) {
         platforms[i].updatePosition();
     }
-    if (player.getY() > screenHeight) {
+    if (player.getY() > screenheight) {
         resetGame();
     }
 }
