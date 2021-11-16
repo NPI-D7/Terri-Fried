@@ -81,7 +81,7 @@ void resetGame() {
         platforms[i] = Platform(i);
     
     player.setVelocity(0, 0);
-    player.setX(platforms[0].getX() + platforms[0].getWidth()/2 - 26/2);
+    player.setX(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2);
     player.setY(platforms[0].getY() - player.getHeight());
 }
 
