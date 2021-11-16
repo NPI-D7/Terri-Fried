@@ -1,4 +1,6 @@
 #include "Game.hpp"
+#include "platform.hpp"
+#include "player.hpp"
 
 const double pi = 3.1415926535897;
 const int gravity = 1;
@@ -37,6 +39,7 @@ void Game::Draw(void) const
     for (int i = 0; i < 4; i++)
     {
         RenderD7::DrawImageFromSheet(&tx, 4, platform[i].getX(), platform[i].getX(), 0.5, 0.5);
+        if (platform[i].getHasCoin()) RenderD7::DrawImageFromSheet(&tx, 1, platform[i].getCoinX(), platform[i].getCoinX(), 0.5, 0.5);
     }
     RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
     //RenderD7::DrawText(5, lavaY, 0.7f, RenderD7::Color::Hex("#FFFFFF"), "Test");
