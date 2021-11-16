@@ -40,7 +40,7 @@ Game::Game()
 
 void Game::Draw(void) const
 {
-    RenderD7::OnScreen(Top);
+    RenderD7::OnScreen(Bottom);
     RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
     RenderD7::OnScreen(Top);
     egg.Draw();
