@@ -159,4 +159,16 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
          player.setY(player.getY() - 1);
          player.setVelocity((double)velocityX*.04, (double)velocityY*.04);
     }
+    if (d7_hHeld & KEY_TOUCH && playier.isOnGround())
+    {
+        C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
+                    mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
+                    RenderD7::Color::Hex("#EDE4DE"),
+                    mouse_x + (player.getX() - mouseDownX) + (player.getWidth()/2),
+                    mouse_y + (player.getY() - mouseDownY) + (player.getHeight()/2),
+                    RenderD7::Color::Hex("#EDE4DE"),
+                    1,
+                    1
+                );
+    }
 }
