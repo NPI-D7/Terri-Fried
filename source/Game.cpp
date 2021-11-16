@@ -6,7 +6,7 @@ const double pi = 3.1415926535897;
 const int gravity = 1;
 
 Platform platforms[4] = {{0}, {1}, {2}, {3}};
-Player player(platforms[0].getX() + platforms[0].getWidth()/2 - 26/2, platforms[0].getY() - player.getHeight(), 26, 32);
+Player player(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2, platforms[0].getY() - player.getHeight(), 26/2, 32/2);
 //Spritesheet
 RenderD7::Sheet tx;
 //Sprites
@@ -28,7 +28,7 @@ void checkPlayerCollision() {
     bool onPlatform = false;
     
     for (int i = 0; i < 4; i++) {
-        if (platforms[i].getHasCoin() && player.getX() + player.getWidth() - 3 > platforms[i].getCoinX() && player.getX() + 3 < platforms[i].getCoinX() + 24 && player.getY() + player.getHeight() - 3 > platforms[i].getCoinY() && player.getY() + 3 < platforms[i].getCoinY() + 24) {
+        if (platforms[i].getHasCoin() && player.getX() + player.getWidth() - 3 > platforms[i].getCoinX() && player.getX() + 3 < platforms[i].getCoinX() + 24/2 && player.getY() + player.getHeight() - 3 > platforms[i].getCoinY() && player.getY() + 3 < platforms[i].getCoinY() + 24/2) {
             //addScore(1);
             platforms[i].setHasCoin(false);
             //playCoinFX = true;
