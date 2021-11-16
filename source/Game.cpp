@@ -23,6 +23,31 @@ int screenheight = 240;
 int screenwidth = 400;
 double timer = 0;
 double lavaY = screenheight - 32/2;
+
+void checkPlayerCollision() {
+    bool onPlatform = false;
+    
+    for (int i = 0; i < 4; i++) {
+        if (platforms[i].getHasCoin() && player.getX() + player.getWidth() - 3 > platforms[i].getCoinX() && player.getX() + 3 < platforms[i].getCoinX() + 24 && player.getY() + player.getHeight() - 3 > platforms[i].getCoinY() && player.getY() + 3 < platforms[i].getCoinY() + 24) {
+            addScore(1);
+            platforms[i].setHasCoin(false);
+            playCoinFX = true;
+        }
+        
+        if (player.getX() + 1 < platforms[i].getX() + platforms[i].getWidth() && player.getX() + player.getWidth() > platforms[i].getX() && player.getY() + player.getHeight() >= platforms[i].getY() && player.getY() < platforms[i].getY() + platforms[i].getHeight()) {
+            if (player.getY() > platforms[i].getY() + platforms[i].getHeight()/2) {
+                player.setVelocity(player.getVelocity().x, 5);
+            } 
+            else if (player.getY() + player.getHeight() <  platforms[i].getY() + platforms[i].getHeight()) {    
+                onPlatform = true;
+                player.setY(platforms[i].getY() - player.getHeight());
+                player.setY(player.getY() + 1);
+            }
+        }
+    }
+    player.setOnPlatform(onPlatform);
+}
+
 Game::Game()
 {
     //Load Spritesheet
@@ -49,6 +74,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
 {
     lavaY = screenheight - 16 - sin(timer) * 5;
     timer += 0.05/2;
+    checkPlayerCollision();
     player.updatePosition();
     for (int i = 0; i < 4; i++) {
         platforms[i].updatePosition();
