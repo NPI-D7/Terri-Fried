@@ -128,6 +128,7 @@ void Game::Draw(void) const
         if (platforms[i].getHasCoin()) RenderD7::DrawImageFromSheet(&tx, 1, platforms[i].getCoinX(), platforms[i].getCoinY(), 0.5, 0.5);
     }
     RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
+    RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
     //RenderD7::DrawText(5, lavaY, 0.7f, RenderD7::Color::Hex("#FFFFFF"), "Test");
 }
 
