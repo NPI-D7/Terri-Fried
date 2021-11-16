@@ -61,8 +61,8 @@ Vector2 Player::getVelocity() {
 }
 
 void Player::updatePosition() {
-    x += velocity.x/2;
-    y += velocity.y/2;
+    x += velocity.x;
+    y += velocity.y;
     
     if (!isOnGround())
         velocity.y += gravity;
