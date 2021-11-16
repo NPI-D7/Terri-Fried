@@ -43,8 +43,11 @@ void Game::Draw(void) const
     RenderD7::OnScreen(Bottom);
     RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
     RenderD7::OnScreen(Top);
+    RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
     egg.Draw();
     lava.Draw();
+    RenderD7::DrawImageFromSheet(&tx, 0, 0, 0, 0.5, 0.5);
+    RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
     RenderD7::DrawText(5, lavaY, 0.7f, RenderD7::Color::Hex("#FFFFFF"), "Terri-Fried->Game");
 }
 
