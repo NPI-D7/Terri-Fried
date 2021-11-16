@@ -18,8 +18,8 @@ class Game : public RenderD7::Scene
     static RenderD7::Sprite scorebox;
     static RenderD7::Sprite splash_egg;
 
-    static int screenheight = 240;
-    static int screenwidth = 400;
-    static double timer = 0;
-    static double lavaY = screenheight - 32/2;
+    int screenheight = 240;
+    int screenwidth = 400;
+    double timer = 0;
+    double lavaY = screenheight - 32/2;
 };
