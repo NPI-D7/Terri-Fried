@@ -19,7 +19,7 @@ Platform::Platform(int index) {
         hasCoin = true;
     
     coinX = x + width/2 - (24/2)/2;
-    coinY = y - 24/2 - 5;
+    coinY = y - 24/2 - 3;
 }
 
 double Platform::getX() {
@@ -55,10 +55,10 @@ int Platform::getCoinY() {
 }
 
 void Platform::updatePosition() {
-    y+=1;
+    y+=0.5;
     
     coinX = x + width/2 - (24/2)/2;
-    coinY = y - 24/2 - 5;
+    coinY = y - 24/2 - 3;
     
     if (y > screenHeight) {
         x = rand()% 660/2 + 20/2;
