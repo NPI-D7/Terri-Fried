@@ -1,5 +1,10 @@
 #include "Game.hpp"
 
+const double pi = 3.1415926535897;
+const int gravity = 1;
+
+Platform platforms[4] = {{0}, {1}, {2}, {3}};
+Player player(platforms[0].getX() + platforms[0].getWidth()/2 - 26/2, platforms[0].getY() - player.getHeight(), 26, 32);
 //Spritesheet
 RenderD7::Sheet tx;
 //Sprites
@@ -28,7 +33,11 @@ void Game::Draw(void) const
     RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
     RenderD7::OnScreen(Top);
     RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
-    RenderD7::DrawImageFromSheet(&tx, 0, 0, 0, 0.5, 0.5);
+    RenderD7::DrawImageFromSheet(&tx, 0, player.getX(), player.getY(), 0.5, 0.5);
+    for (int i = 0; i < 4; i++)
+    {
+        RenderD7::DrawImageFromSheet(&tx, 4, platform[i].getX(), platform[i].getX(), 0.5, 0.5);
+    }
     RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
     //RenderD7::DrawText(5, lavaY, 0.7f, RenderD7::Color::Hex("#FFFFFF"), "Test");
 }
@@ -37,4 +46,8 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
 {
     lavaY = screenheight - 16 - sin(timer) * 5;
     timer += 0.05/2;
+    player.updatePosition();
+    for (int i = 0; i < 4; i++) {
+        platforms[i].updatePosition();
+    }
 }
