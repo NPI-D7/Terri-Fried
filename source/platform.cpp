@@ -11,7 +11,7 @@ Platform::Platform(int index) {
     x = rand()% 660/2 + 20/2;
     y = 0 - height - (index * 100/2);
     
-    int coinInt = rand()% 4;
+    int coinInt = rand()% 5;
     
     if (coinInt == 0 || index == 0)
         hasCoin = false;
@@ -64,7 +64,7 @@ void Platform::updatePosition() {
         x = rand()% 660/2 + 20/2;
         y = 0 - height;
         
-        int coinInt = rand()% 4;
+        int coinInt = rand()% 5;
         
         if (coinInt == 0)
             hasCoin = false;
