@@ -140,7 +140,7 @@ void Game::Draw(void) const
 {
     RenderD7::OnScreen(Bottom);
     RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
-    RenderD7::DrawTextCentered(51+5, 230, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
+    RenderD7::DrawTextCentered(0, 215, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
 
     RenderD7::OnScreen(Top);
     RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
