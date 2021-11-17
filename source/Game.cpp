@@ -163,7 +163,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
          else {
              if(player.isOnPlatform()) player.setY(player.getY() - 1);
              
-             player.setVelocity((double)velocityX*.08, (double)velocityY*.08);
+             player.setVelocity((double)velocityX*.16, (double)velocityY*.16);
          } 
     }
     if (d7_hHeld & KEY_TOUCH && player.isOnGround())
