@@ -140,7 +140,7 @@ void Game::Draw(void) const
 {
     RenderD7::OnScreen(Bottom);
     RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
-    RenderD7::DrawTextLeft(51+5, 5, 0.9f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 0, 0, font);
+    RenderD7::DrawTextCentered(51+5, 230, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
 
     RenderD7::OnScreen(Top);
     RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
@@ -152,7 +152,7 @@ void Game::Draw(void) const
     }
     RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
     RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
-    RenderD7::DrawTextLeft(51+5, 5, 0.9f, RenderD7::Color::Hex("#000000"), std::to_string(scoreInt), 0, 0, font);
+    RenderD7::DrawTextLeft(51+5, 7, 0.9f, RenderD7::Color::Hex("#000000"), std::to_string(scoreInt), 0, 0, font);
 }
 
 void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
