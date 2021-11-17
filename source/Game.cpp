@@ -4,6 +4,8 @@
 
 const double pi = 3.1415926535897;
 const int gravity = 1;
+int velocityX;
+int velocityY;
 
 Platform platforms[5] = {{0}, {1}, {2}, {3}, {4}};
 Player player(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2, platforms[0].getY() - player.getHeight(), 26/2, 32/2);
@@ -151,8 +153,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
          mouseDownX = touch.px;
          mouseDownY = touch.py;
     }
-    int velocityX;
-    int velocityY;
+    
     if (hUp & KEY_TOUCH && player.isOnGround())
     {
          if (firstTime)
