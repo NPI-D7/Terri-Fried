@@ -11,6 +11,7 @@ Platform platforms[5] = {{0}, {1}, {2}, {3}, {4}};
 Player player(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2, platforms[0].getY() - player.getHeight(), 26/2, 32/2);
 //Spritesheet
 RenderD7::Sheet tx;
+C2D_Font font;
 //Sprites
 /*Load Sprites
     egg.FromSheet(&tx, 0);
@@ -117,6 +118,7 @@ Game::Game()
 {
     //Load Spritesheet
     tx.Load("romfs:/gfx/tx.t3x");
+    RenderD7::loadFont(font, "romfs:/font.bcfnt");
 }
 
 void Game::Draw(void) const
@@ -133,7 +135,7 @@ void Game::Draw(void) const
     }
     RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
     RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
-    //RenderD7::DrawText(5, lavaY, 0.7f, RenderD7::Color::Hex("#FFFFFF"), "Test");
+    RenderD7::DrawText(10, 12, 0.7f, RenderD7::Color::Hex("#FFFFFF"), std::to_string(scoreInt), 0, 0, font);
 }
 
 void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
