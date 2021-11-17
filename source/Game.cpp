@@ -136,6 +136,11 @@ Game::Game()
     sfx_splash = std::make_unique<sound>("romfs:/splash.wav", 6);
 }
 
+Game::~Game()
+{
+    tx.Free();
+}
+
 void Game::Draw(void) const
 {
     RenderD7::OnScreen(Bottom);
