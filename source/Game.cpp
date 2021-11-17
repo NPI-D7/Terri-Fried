@@ -29,7 +29,7 @@ std::unique_ptr<sound> sfx_coin = nullptr;
 std::unique_ptr<sound> sfx_die = nullptr;
 std::unique_ptr<sound> sfx_launch = nullptr;
 std::unique_ptr<sound> sfx_select = nullptr;
-std::unique_ptr<sound> sfx_splach = nullptr;
+std::unique_ptr<sound> sfx_splash = nullptr;
 
 int screenheight = 240;
 int screenwidth = 400;
@@ -129,11 +129,11 @@ Game::Game()
     tx.Load("romfs:/gfx/tx.t3x");
     RenderD7::loadFont(font, "romfs:/font.bcfnt");
     sfx_click = std::make_unique<sound>("romfs:/click.wav", 1);
-    sfx_coin = std::make_unique<sound>("romfs:/coin.wav", 1);
-    sfx_die = std::make_unique<sound>("romfs:/die.wav", 1);
-    sfx_launch = std::make_unique<sound>("romfs:/launch.wav", 1);
-    sfx_select = std::make_unique<sound>("romfs:/select.wav", 1);
-    sfx_splash = std::make_unique<sound>("romfs:/splash.wav", 1);
+    sfx_coin = std::make_unique<sound>("romfs:/coin.wav", 2);
+    sfx_die = std::make_unique<sound>("romfs:/die.wav", 3);
+    sfx_launch = std::make_unique<sound>("romfs:/launch.wav", 4);
+    sfx_select = std::make_unique<sound>("romfs:/select.wav", 5);
+    sfx_splash = std::make_unique<sound>("romfs:/splash.wav", 6);
 }
 
 void Game::Draw(void) const
@@ -163,7 +163,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         platforms[i].updatePosition();
     }
     if (player.getY() > screenheight) {
-        sfx_die-play();
+        sfx_die->play();
         resetGame();
     }
     if (hDown & KEY_TOUCH && player.isOnGround())
