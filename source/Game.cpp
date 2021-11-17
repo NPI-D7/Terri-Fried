@@ -31,7 +31,6 @@ std::unique_ptr<sound> sfx_launch = nullptr;
 std::unique_ptr<sound> sfx_select = nullptr;
 std::unique_ptr<sound> sfx_splash = nullptr;
 
-bool playCoinFX = false;
 int screenheight = 240;
 int screenwidth = 400;
 int mouseDownX = 0;
