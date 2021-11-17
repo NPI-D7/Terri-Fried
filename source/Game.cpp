@@ -151,7 +151,8 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
          mouseDownX = touch.px;
          mouseDownY = touch.py;
     }
-    
+    int velocityX = touch.px - mouseDownX;
+    int velocityY = touch.py - mouseDownY;
     if (hUp & KEY_TOUCH && player.isOnGround())
     {
          if (firstTime)
@@ -160,8 +161,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
          }
          else {
              if(player.isOnPlatform()) player.setY(player.getY() - 1);
-             int velocityX = touch.px - mouseDownX;
-             int velocityY = touch.py - mouseDownY;
+             
              player.setVelocity((double)velocityX*.08, (double)velocityY*.08);
          } 
     }
@@ -169,10 +169,10 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     {
         C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
-                    RenderD7::Color::Hex("#EDE4DE"),
+                    RenderD7::Color::Hex("#EEEEEE"),
                     touch.px + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     touch.py + (player.getY() - mouseDownY) + (player.getHeight()/2),
-                    RenderD7::Color::Hex("#EDE4DE"),
+                    RenderD7::Color::Hex("#EEEEEE"),
                     1,
                     1
                 );
