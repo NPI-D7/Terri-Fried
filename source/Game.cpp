@@ -135,7 +135,7 @@ void Game::Draw(void) const
     }
     RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
     RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
-    RenderD7::DrawText(10, 12, 0.7f, RenderD7::Color::Hex("#FFFFFF"), std::to_string(scoreInt), 0, 0, font);
+    RenderD7::DrawText(10, 12, 0.7f, RenderD7::Color::Hex("#000000"), std::to_string(scoreInt), 0, 0, font);
 }
 
 void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
@@ -175,10 +175,10 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         RenderD7::OnScreen(Top);
         C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
-                    RenderD7::Color::Hex("#EEEEEE"),
+                    RenderD7::Color::Hex("#000000"),
                     touch.px + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     touch.py + (player.getY() - mouseDownY) + (player.getHeight()/2),
-                    RenderD7::Color::Hex("#EEEEEE"),
+                    RenderD7::Color::Hex("#000000"),
                     1,
                     1
                 );
