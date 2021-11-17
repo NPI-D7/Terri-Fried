@@ -43,6 +43,7 @@ jobs:
       - name: Build
         id: build
         run: |
+          mkbcfnt -o romfs/font.bcfnt gfx/font.ttf
           make
           mkdir -p ~/artifacts
           cp Terri-Fried.3dsx ~/artifacts
