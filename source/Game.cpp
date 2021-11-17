@@ -151,8 +151,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
          mouseDownX = touch.px;
          mouseDownY = touch.py;
     }
-    int velocityX = touch.px - mouseDownX;
-    int velocityY = touch.py - mouseDownY;
+    
     if (hUp & KEY_TOUCH && player.isOnGround())
     {
          if (firstTime)
@@ -167,6 +166,9 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     }
     if (d7_hHeld & KEY_TOUCH && player.isOnGround())
     {
+        int velocityX = touch.px - mouseDownX;
+        int velocityY = touch.py - mouseDownY;
+        RenderD7::OnScreen(Top);
         C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
                     RenderD7::Color::Hex("#EEEEEE"),
