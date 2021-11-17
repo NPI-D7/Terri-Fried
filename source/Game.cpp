@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include "platform.hpp"
 #include "player.hpp"
+#include "sound.hpp"
 
 const double pi = 3.1415926535897;
 const int gravity = 1;
@@ -22,6 +23,14 @@ C2D_Font font;
     scorebox.FromSheet(&tx, 5);
     splash_egg.FromSheet(&tx, 6);
 */
+
+std::unique_ptr<sound> sfx_click = nullptr;
+std::unique_ptr<sound> sfx_coin = nullptr;
+std::unique_ptr<sound> sfx_die = nullptr;
+std::unique_ptr<sound> sfx_launch = nullptr;
+std::unique_ptr<sound> sfx_select = nullptr;
+std::unique_ptr<sound> sfx_splach = nullptr;
+
 int screenheight = 240;
 int screenwidth = 400;
 int mouseDownX = 0;
@@ -119,6 +128,12 @@ Game::Game()
     //Load Spritesheet
     tx.Load("romfs:/gfx/tx.t3x");
     RenderD7::loadFont(font, "romfs:/font.bcfnt");
+    sfx_click = std::make_unique<sound>("romfs:/click.wav", 1);
+    sfx_coin = std::make_unique<sound>("romfs:/coin.wav", 1);
+    sfx_die = std::make_unique<sound>("romfs:/die.wav", 1);
+    sfx_launch = std::make_unique<sound>("romfs:/launch.wav", 1);
+    sfx_select = std::make_unique<sound>("romfs:/select.wav", 1);
+    sfx_splash = std::make_unique<sound>("romfs:/splash.wav", 1);
 }
 
 void Game::Draw(void) const
@@ -148,10 +163,12 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         platforms[i].updatePosition();
     }
     if (player.getY() > screenheight) {
+        sfx_die-play();
         resetGame();
     }
     if (hDown & KEY_TOUCH && player.isOnGround())
     {
+         sfx_click->play();
          mouseDownX = touch.px;
          mouseDownY = touch.py;
     }
@@ -163,6 +180,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
               firstTime = false;
          }
          else {
+             sfx_launch->play();
              if(player.isOnPlatform()) player.setY(player.getY() - 1);
              
              player.setVelocity((double)velocityX*.16, (double)velocityY*.16);
