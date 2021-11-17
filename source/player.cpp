@@ -64,10 +64,10 @@ void Player::updatePosition() {
     x += velocity.x;
     y += velocity.y;
 
-    if (velocity.x > 3) velocity.x = 3;
-    if (velocity.y > 3) velocity.y = 3;
-    if (velocity.x < -3) velocity.x = -3;
-    if (velocity.y < -3) velocity.y = -3;
+    if (velocity.x > 10) velocity.x = 10;
+    if (velocity.y > 10) velocity.y = 10;
+    if (velocity.x < -10) velocity.x = -10;
+    if (velocity.y < -10) velocity.y = -10;
     
     if (!isOnGround())
         velocity.y += gravity;
