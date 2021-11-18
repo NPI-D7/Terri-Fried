@@ -63,7 +63,8 @@ int highscoreInt = LoadHighScore();
 char score[32] = "000";
 char highscore[32] = "BEST: 0";
 
-bool titleScreen = true;
+bool titlescreen = false;
+bool splashScreen = true;
 bool playCoinFX = false;
 
 void addScore(int amount) {
@@ -143,48 +144,88 @@ Game::~Game()
 
 void Game::Draw(void) const
 {
-    RenderD7::OnScreen(Bottom);
-    RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
-    RenderD7::DrawTextCentered(0, 220, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
-
-    RenderD7::OnScreen(Top);
-    RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
-    RenderD7::DrawImageFromSheet(&tx, 0, player.getX(), player.getY(), 0.5, 0.5);
-    for (int i = 0; i < 5; i++)
+    if (splashScreen)
     {
-        RenderD7::DrawImageFromSheet(&tx, 4, platforms[i].getX(), platforms[i].getY(), 0.5, 0.5);
-        if (platforms[i].getHasCoin()) RenderD7::DrawImageFromSheet(&tx, 1, platforms[i].getCoinX(), platforms[i].getCoinY(), 0.5, 0.5);
+        RenderD7::OnScreen(Bottom);
+        RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
+       // RenderD7::DrawTextCentered(0, 220, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
+
+        RenderD7::OnScreen(Top);
+        RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
+        RenderD7::DrawImageFromSheet(&tx, 6, 184, 104, 0.5, 0.5);
     }
-    RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
-    RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
-    RenderD7::DrawTextLeft(51+5, 7, 0.9f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
-    RenderD7::DrawText(5, 40, 0.7f, RenderD7::Color::Hex("#000000"), highscore, 0, 0, font);
+    if (titlescreen)
+    {
+        RenderD7::OnScreen(Bottom);
+        RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
+        RenderD7::DrawTextCentered(0, 220, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
+
+        RenderD7::OnScreen(Top);
+        RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
+        RenderD7::DrawImageFromSheet(&tx, 3, 100, 175, 0.5, 0.5);
+     
+    }
+    else {
+        RenderD7::OnScreen(Bottom);
+        RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
+        RenderD7::DrawTextCentered(0, 220, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
+
+        RenderD7::OnScreen(Top);
+        RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
+        RenderD7::DrawImageFromSheet(&tx, 0, player.getX(), player.getY(), 0.5, 0.5);
+        for (int i = 0; i < 5; i++)
+        {
+            RenderD7::DrawImageFromSheet(&tx, 4, platforms[i].getX(), platforms[i].getY(), 0.5, 0.5);
+            if (platforms[i].getHasCoin()) RenderD7::DrawImageFromSheet(&tx, 1, platforms[i].getCoinX(), platforms[i].getCoinY(), 0.5, 0.5);
+        }
+        RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
+        RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
+        RenderD7::DrawTextLeft(51+5, 7, 0.9f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
+        RenderD7::DrawText(5, 40, 0.7f, RenderD7::Color::Hex("#000000"), highscore, 0, 0, font);
+    }
 }
 
 void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
 {
-    lavaY = screenheight - 16 - sin(timer) * 5;
-    timer += 0.05/2;
-    checkPlayerCollision();
-    player.updatePosition();
-    for (int i = 0; i < 5; i++) {
-        platforms[i].updatePosition();
-    }
-    if (player.getY() > screenheight) {
-        sfx_die->play();
-        resetGame();
-    }
-    if (hDown & KEY_TOUCH && player.isOnGround())
+    if (splashScreen)
     {
-         sfx_click->play();
-         mouseDownX = touch.px;
-         mouseDownY = touch.py;
+         sfx_splash->play();
+         for (int i = 0; i < 3*60){}
+         titlescreen = true;
+         splashScreen = false;
     }
+    if (titlescreen)
+    {
+        if (hDown & KEY_TOUCH)
+        {
+              sfx_select->play();
+              titlescreen = false;
+        {
+    }
+    else
+    {
+        lavaY = screenheight - 16 - sin(timer) * 5;
+        timer += 0.05/2;
+        checkPlayerCollision();
+        player.updatePosition();
+        for (int i = 0; i < 5; i++) {
+            platforms[i].updatePosition();
+        }
+        if (player.getY() > screenheight) {
+            sfx_die->play();
+            resetGame();
+        }
+        if (hDown & KEY_TOUCH && player.isOnGround())
+        {
+             sfx_click->play();
+             mouseDownX = touch.px;
+             mouseDownY = touch.py;
+        }
     
-    if (hUp & KEY_TOUCH && player.isOnGround())
-    {
-         if (firstTime)
-         {
+        if (hUp & KEY_TOUCH && player.isOnGround())
+        {
+             if (firstTime)
+             {
               firstTime = false;
          }
          else {
@@ -192,14 +233,14 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
              if(player.isOnPlatform()) player.setY(player.getY() - 1);
              
              player.setVelocity((double)velocityX*.16, (double)velocityY*.16);
-         } 
-    }
-    if (d7_hHeld & KEY_TOUCH && player.isOnGround())
-    {
-        velocityX = touch.px - mouseDownX;
-        velocityY = touch.py - mouseDownY;
-        RenderD7::OnScreen(Top);
-        C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
+             } 
+        }
+        if (d7_hHeld & KEY_TOUCH && player.isOnGround())
+        {
+            velocityX = touch.px - mouseDownX;
+            velocityY = touch.py - mouseDownY;
+            RenderD7::OnScreen(Top);
+            C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
                     RenderD7::Color::Hex("#000000"),
                     touch.px + (player.getX() - mouseDownX) + (player.getWidth()/2),
@@ -208,11 +249,12 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
                     1,
                     1
                 );
+        }
+        if (playCoinFX) 
+        {
+            sfx_coin->play();
+            playCoinFX = false;
+        }
+        if (hDown & KEY_START) RenderD7::ExitApp();
     }
-    if (playCoinFX) 
-    {
-        sfx_coin->play();
-        playCoinFX = false;
-    }
-    if (hDown & KEY_START) RenderD7::ExitApp();
 }
