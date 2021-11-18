@@ -1,8 +1,8 @@
 #include <vector>
 
 typedef struct {
-    int x;
-    int y;
+    double x;
+    double y;
 } Vector2;
 
 class Player {
