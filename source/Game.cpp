@@ -61,7 +61,7 @@ void SaveHighScore(int val) {
 int scoreInt = 0;
 int highscoreInt = LoadHighScore();
 char score[32] = "000";
-char highscore[32];
+char highscore[32] = "BEST: 0";
 
 bool titleScreen = true;
 bool playCoinFX = false;
@@ -158,7 +158,7 @@ void Game::Draw(void) const
     RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
     RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
     RenderD7::DrawTextLeft(51+5, 7, 0.9f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
-    RenderD7::DrawText(5, 30, 0.7f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
+    RenderD7::DrawText(5, 40, 0.7f, RenderD7::Color::Hex("#000000"), highscore, 0, 0, font);
 }
 
 void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
