@@ -8,6 +8,8 @@ const double gravity = 1;
 int velocityX;
 int velocityY;
 
+int spt;
+
 Platform platforms[5] = {{0}, {1}, {2}, {3}, {4}};
 Player player(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2, platforms[0].getY() - player.getHeight(), 26/2, 32/2);
 //Spritesheet
@@ -135,6 +137,7 @@ Game::Game()
     sfx_launch = std::make_unique<sound>("romfs:/launch.wav", 4);
     sfx_select = std::make_unique<sound>("romfs:/select.wav", 5);
     sfx_splash = std::make_unique<sound>("romfs:/splash.wav", 6);
+    sfx_splash->play();
 }
 
 Game::~Game()
@@ -189,9 +192,9 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
 {
     if (splashScreen)
     {
-         sfx_splash->play();
-         for (int i = 0; i < 3*60; i++){if (i>3*50){titlescreen = true; splashScreen = false;}}
+         if (spt>120){titlescreen = true; splashScreen = false;}}
     }
+    spt ++;
     if (titlescreen)
     {
         if (hDown & KEY_TOUCH)
