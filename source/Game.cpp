@@ -157,7 +157,7 @@ void Game::Draw(void) const
     }
     RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
     RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
-    RenderD7::DrawTextLeft(51+5, 7, 0.9f, RenderD7::Color::Hex("#000000"), std::to_string(scoreInt), 0, 0, font);
+    RenderD7::DrawTextLeft(51+5, 7, 0.9f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
 }
 
 void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
