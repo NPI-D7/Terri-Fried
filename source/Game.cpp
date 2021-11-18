@@ -192,9 +192,9 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
 {
     if (splashScreen)
     {
-         if (spt>120){titlescreen = true; splashScreen = false;}}
+         if (spt>120){titlescreen = true; splashScreen = false;}
     }
-    spt ++;
+    spt +=1;
     if (titlescreen)
     {
         if (hDown & KEY_TOUCH)
