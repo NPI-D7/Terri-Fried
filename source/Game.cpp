@@ -4,7 +4,7 @@
 #include "sound.hpp"
 
 const double pi = 3.1415926535897;
-const int gravity = 1;
+const double gravity = 1;
 int velocityX;
 int velocityY;
 
