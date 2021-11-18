@@ -162,7 +162,7 @@ void Game::Draw(void) const
 
         RenderD7::OnScreen(Top);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
-        RenderD7::DrawImageFromSheet(&tx, 3, 100, 175, 0.5, 0.5);
+        RenderD7::DrawImageFromSheet(&tx, 3, 100, 75, 0.5, 0.5);
      
     }
     else {
