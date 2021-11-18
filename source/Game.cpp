@@ -200,7 +200,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         {
               sfx_select->play();
               titlescreen = false;
-        {
+        }
     }
     else
     {
