@@ -190,7 +190,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     if (splashScreen)
     {
          sfx_splash->play();
-         for (int i = 0; i < 3*60){}
+         for (int i = 0; i < 3*60; i++){}
          titlescreen = true;
          splashScreen = false;
     }
