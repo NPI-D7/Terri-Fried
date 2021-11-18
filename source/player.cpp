@@ -4,7 +4,7 @@
 #include <vector>
 
 const double pi = 3.1415926535897;
-const int gravity = 1;
+const double gravity = 0.5;
 const int screenWidth = 400;
 const int screenHeight = 240;
 
