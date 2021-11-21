@@ -9,7 +9,7 @@ int velocityX;
 int velocityY;
 
 int spt;
-std::string d_ver = "Beta: 0.4, Commit: ";
+std::string d_ver = "Beta: 0.5, Commit: ";
 
 Platform platforms[5] = {{0}, {1}, {2}, {3}, {4}};
 Player player(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2, platforms[0].getY() - player.getHeight(), 26/2, 32/2);
