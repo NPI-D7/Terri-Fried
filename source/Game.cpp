@@ -175,7 +175,9 @@ void Game::Draw(void) const
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
         RenderD7::DrawTextCentered(0, 220, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
         RenderD7::DrawText(5, 1, 0.6f, RenderD7::Color::Hex("#000000"), d_ver, 0, 0, font);
-
+        if (! RenderD7::IsNdspInit()){
+        RenderD7::DrawText(5, 1, 0.6f, RenderD7::Color::Hex("#000000"), "SoundEngine failed!", 0, 0, font);
+        }
         RenderD7::OnScreen(Top);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
         RenderD7::DrawImageFromSheet(&tx, 0, player.getX(), player.getY(), 0.5, 0.5);
