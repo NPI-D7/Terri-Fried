@@ -195,17 +195,19 @@ void Game::Draw(void) const
 
 void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
 {
-    if (splashScreen)
-    {
-         if (spt>120){titlescreen = true; splashScreen = false;}
-    }
-    spt +=1;
     if (titlescreen)
     {
-        if (hDown & KEY_TOUCH)
+        if (splashScreen)
         {
-              sfx_select->play();
-              titlescreen = false;
+             if (spt>120){titlescreen = true; splashScreen = false;}
+        }
+        spt +=1;
+        else{
+            if (hDown & KEY_TOUCH)
+            {
+                 sfx_select->play();
+                  titlescreen = false;
+            }
         }
     }
     else
