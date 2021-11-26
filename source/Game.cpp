@@ -66,7 +66,7 @@ int highscoreInt = LoadHighScore();
 char score[32] = "000";
 char highscore[32] = "BEST: 0";
 
-bool titlescreen = false;
+bool titlescreen = true;
 bool splashScreen = true;
 bool playCoinFX = false;
 
@@ -199,16 +199,16 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     {
         if (splashScreen)
         {
-             if (spt>120){titlescreen = true; splashScreen = false;}
+             if (spt>120){splashScreen = false;}
         }
         spt +=1;
-        else{
-            if (hDown & KEY_TOUCH)
+        //else{
+            if (hDown & KEY_TOUCH && spt>120)
             {
                  sfx_select->play();
                   titlescreen = false;
             }
-        }
+       // }
     }
     else
     {
