@@ -158,9 +158,9 @@ void Game::Draw(void) const
         RenderD7::OnScreen(Top);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
         RenderD7::DrawImageFromSheet(&tx, 6, 184, 104, 0.5, 0.5);
-        RenderD7::DrawTextCentered(0, 220, 0.6f, RenderD7::Color::Hex("#000000"), "POLYMARS, TobiD7", 400, 0, font);
+        RenderD7::DrawTextCentered(0, 120, 0.6f, RenderD7::Color::Hex("#000000"), "POLYMARS, TobiD7", 400, 0, font);
     }
-    if (titlescreen)
+    if (titlescreen && spt>120)
     {
         RenderD7::OnScreen(Bottom);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
