@@ -170,8 +170,8 @@ void Game::Draw(void) const
         RenderD7::OnScreen(Top);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
         RenderD7::DrawImageFromSheet(&tx, 3, 100, 75, 0.5, 0.5);
-        RenderD7::DrawTextCentered(0, 100, 0.6f, RenderD7::Color::Hex("#000000"), highscore, 400, 0, font);
-        RenderD7::DrawTextCentered(0, 130, 0.6f, RenderD7::Color::Hex("#000000"), "CLICK ANYWHERE TO BEGIN", 400, 0, font);
+        RenderD7::DrawTextCentered(44, 115, 0.6f, RenderD7::Color::Hex("#000000"), highscore, 400, 0, font);
+        RenderD7::DrawTextCentered(44, 130, 0.6f, RenderD7::Color::Hex("#000000"), "CLICK ANYWHERE TO BEGIN", 400, 0, font);
     }
     if (g_ame) {
         RenderD7::OnScreen(Bottom);
