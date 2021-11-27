@@ -69,6 +69,7 @@ char highscore[32] = "BEST: 0";
 bool titlescreen = true;
 bool splashScreen = true;
 bool playCoinFX = false;
+bool g_ame = false;
 
 void addScore(int amount) {
     scoreInt += amount;
@@ -171,7 +172,7 @@ void Game::Draw(void) const
         RenderD7::DrawImageFromSheet(&tx, 3, 100, 75, 0.5, 0.5);
      
     }
-    else {
+    if (g_ame) {
         RenderD7::OnScreen(Bottom);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
         RenderD7::DrawTextCentered(0, 220, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
@@ -207,11 +208,12 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
             if (hDown & KEY_TOUCH && spt>120)
             {
                  sfx_select->play();
+                 g_ame = true;
                   titlescreen = false;
             }
        // }
     }
-    else
+    if (g_ame)
     {
         lavaY = screenheight - 16 - sin(timer) * 5;
         timer += 0.05/2;
