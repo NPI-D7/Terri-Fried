@@ -44,7 +44,7 @@ jobs:
         id: build
         run: |
           mkbcfnt -o romfs/font.bcfnt gfx/font.ttf
-          make
+          make -j $D_RELEASE
           mkdir -p ~/artifacts
           cp Terri-Fried.3dsx ~/artifacts
           cp Terri-Fried.cia ~/artifacts
