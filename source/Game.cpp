@@ -165,12 +165,13 @@ void Game::Draw(void) const
     {
         RenderD7::OnScreen(Bottom);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
-        RenderD7::DrawTextCentered(0, 220, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
+        
 
         RenderD7::OnScreen(Top);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
         RenderD7::DrawImageFromSheet(&tx, 3, 100, 75, 0.5, 0.5);
-     
+        RenderD7::DrawTextCentered(0, 100, 0.6f, RenderD7::Color::Hex("#000000"), highscore, 400, 0, font);
+        RenderD7::DrawTextCentered(0, 130, 0.6f, RenderD7::Color::Hex("#000000"), "CLICK ANYWHERE TO BEGIN", 400, 0, font);
     }
     if (g_ame) {
         RenderD7::OnScreen(Bottom);
@@ -191,7 +192,7 @@ void Game::Draw(void) const
         RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
         RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
         RenderD7::DrawTextLeft(51+5, 7, 0.9f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
-        RenderD7::DrawText(8, 40, 0.7f, RenderD7::Color::Hex("#000000"), highscore, 0, 0, font);
+        RenderD7::DrawText(10, 40, 0.7f, RenderD7::Color::Hex("#000000"), highscore, 0, 0, font);
     }
 }
 
