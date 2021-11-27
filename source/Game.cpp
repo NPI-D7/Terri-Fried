@@ -134,7 +134,9 @@ void checkPlayerCollision() {
 
 Game::Game()
 {
+    #ifndef D_RRLEASE
     d_ver += V_STRING;
+    #endif
     //Load Spritesheet
     tx.Load("romfs:/gfx/tx.t3x");
     RenderD7::loadFont(font, "romfs:/font.bcfnt");
