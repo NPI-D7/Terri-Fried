@@ -9,10 +9,10 @@ int velocityX;
 int velocityY;
 
 int spt;
-#ifdef D_Release
+#ifdef D_RELEASE
 std::string d_ver = "V.1.0";
 #endif
-#ifndef D_Release
+#ifndef D_RELEASE
 std::string d_ver = "Beta: 0.6, Commit: ";
 #endif
 Platform platforms[5] = {{0}, {1}, {2}, {3}, {4}};
