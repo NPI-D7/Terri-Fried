@@ -42,7 +42,7 @@ double timer = 0;
 double lavaY = screenheight - 32/2;
 bool firstTime = true;
 int LoadHighScore() {
-    FILE *scorefile = fopen("sdmc:/config/terri-fried-score.bin", "rb");
+    FILE *scorefile = fopen("sdmc:/terri-fried-score.bin", "rb");
     
     if(!scorefile)
         return 0;
@@ -55,7 +55,7 @@ int LoadHighScore() {
 }
 
 void SaveHighScore(int val) {
-    FILE *scorefile = fopen("sdmc:/config/terri-fried-score.bin", "wb");
+    FILE *scorefile = fopen("sdmc:/terri-fried-score.bin", "wb");
     
     fwrite(&val, sizeof(int), 1, scorefile);
     fclose(scorefile);
@@ -158,8 +158,8 @@ void Game::Draw(void) const
 
         RenderD7::OnScreen(Top);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
-        RenderD7::DrawImageFromSheet(&tx, 6, 184, 104, 0.5, 0.5);
-        RenderD7::DrawTextCentered(40, 120, 0.6f, RenderD7::Color::Hex("#000000"), "POLYMARS, TobiD7", 400, 0, font);
+        RenderD7::DrawImageFromSheet(&tx, 6, 190, 104, 0.5, 0.5);
+        RenderD7::DrawTextCentered(44, 120, 0.6f, RenderD7::Color::Hex("#000000"), "POLYMARS, TobiD7", 400, 0, font);
     }
     if (titlescreen && spt>120)
     {
