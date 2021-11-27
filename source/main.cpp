@@ -5,7 +5,7 @@
 
 int main()
 {
-    RenderD7::Init::Main();
+    RenderD7::Init::Main("Terri-Fried");
     RenderD7::Init::NdspFirm(true);
     srand(time(NULL));
     RenderD7::Scene::Load(std::make_unique<Game>());
