@@ -1,0 +1,46 @@
+
+name: CI
+
+on:
+  release:
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repo
+        uses: actions/checkout@v1
+        with:
+          submodules: recursive
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install p7zip-full -y
+          curl -L https://github.com/Steveice10/bannertool/releases/download/1.2.0/bannertool.zip -o bannertool.zip
+          sudo 7z e bannertool.zip linux-x86_64/bannertool
+          sudo chmod +x bannertool
+          mv bannertool /usr/local/bin
+          rm bannertool.zip
+          curl -L https://github.com/3DSGuy/Project_CTR/releases/download/makerom-v0.17/makerom-v0.17-ubuntu_x86_64.zip -o makerom-v0.17-ubuntu_x86_64.zip
+          sudo 7z e makerom-v0.17-ubuntu_x86_64.zip
+          sudo chmod +x makerom
+          mv makerom /usr/local/bin
+          rm makerom-v0.17-ubuntu_x86_64.zip
+      - name: Build
+        run: |
+          mkbcfnt -o romfs/font.bcfnt gfx/font.ttf
+          make -j $D_RELEASE
+          mkdir -p ~/artifacts
+          cp Terri-Fried.3dsx ~/artifacts
+          cp Terri-Fried.cia ~/artifacts
+      - name: Publish build to GH Actions
+        uses: actions/upload-artifact@v2
+        with:
+          path: ~/artifacts/*
+          name: build
+
