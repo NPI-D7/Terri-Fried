@@ -20,7 +20,7 @@ Player player(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2, platfo
 //Spritesheet
 RenderD7::Sheet tx;
 C2D_Font font;
-//Sprites
+//Sprites :)
 /*Load Sprites
     egg.FromSheet(&tx, 0);
     coin.FromSheet(&tx, 1);
