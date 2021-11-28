@@ -39,9 +39,10 @@ u32 mt_color;
 u32 mt_txtcolor;
 int mt_screen;
 float mt_txtSize;
+bool metrikd = false;
 //-------------------------------------------
 bool currentScreen = false;
-bool metrikd = false;
+
 C3D_RenderTarget* Top;
 C3D_RenderTarget* TopRight;
 C3D_RenderTarget* Bottom;
@@ -824,7 +825,7 @@ void RenderD7::DrawMetrikOvl()
             default:
                 RenderD7::OnScreen(Bottom);
         }
-	RenderD7::DrawText(0, 0, mt_txtSize, mt_txtcolor, "HI");
+	RenderD7::DrawText(0, 0, mt_txtSize, mt_txtcolor, "FPS: " + std::to_string(d11framerate));
 }
 
 /*RenderD7::Console::Console()
