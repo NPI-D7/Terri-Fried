@@ -9,12 +9,12 @@ int velocityX;
 int velocityY;
 
 int spt;
-#ifdef D_RELEASE
+//#ifdef D_RELEASE
 std::string d_ver = "V.1.0";
-#endif
-#ifndef D_RELEASE
-std::string d_ver = "Beta: 0.7, Commit: ";
-#endif
+//#endif
+//#ifndef D_RELEASE
+//std::string d_ver = "Beta: 0.7, Commit: ";
+//#endif
 Platform platforms[5] = {{0}, {1}, {2}, {3}, {4}};
 Player player(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2, platforms[0].getY() - player.getHeight(), 26/2, 32/2);
 //Spritesheet
@@ -134,9 +134,9 @@ void checkPlayerCollision() {
 
 Game::Game()
 {
-    #ifndef D_RRLEASE
-    d_ver += V_STRING;
-    #endif
+    //#ifndef D_RRLEASE
+    //d_ver += V_STRING;
+    //#endif
     //Load Spritesheet
     tx.Load("romfs:/gfx/tx.t3x");
     sprintf(highscore, "BEST: %d", highscoreInt);
