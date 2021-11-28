@@ -68,7 +68,7 @@ void SaveHighScore(int val) {
 int scoreInt = 0;
 int highscoreInt = LoadHighScore();
 char score[32] = "000";
-char highscore[32];
+char highscore[32] = "BEST: 0";
 
 bool titlescreen = true;
 bool splashScreen = true;
