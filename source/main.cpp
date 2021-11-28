@@ -11,7 +11,7 @@ int main()
     RenderD7::Scene::Load(std::make_unique<Game>());
     while(RenderD7::MainLoop())
     {
-        if (d7_hDown & KEY_B) RenderD7::ExitApp();
+        if (d7_hDown & KEY_START) RenderD7::ExitApp();
         C3D_FrameEnd(0);
     }
     RenderD7::Exit::NdspFirm();
