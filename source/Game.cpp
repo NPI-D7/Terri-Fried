@@ -211,14 +211,14 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
              if (spt>120){splashScreen = false;}
         }
         spt +=1;
-        //else{
+        
             if (hDown & KEY_TOUCH && spt>120)
             {
                  sfx_select->play();
                  g_ame = true;
                   titlescreen = false;
             }
-       // }
+       
     }
     if (g_ame)
     {
