@@ -68,7 +68,7 @@ void SaveHighScore(int val) {
 int scoreInt = 0;
 int highscoreInt = LoadHighScore();
 char score[32] = "000";
-char highscore[32] = "BEST: 0";
+char highscore[32];
 
 bool titlescreen = true;
 bool splashScreen = true;
@@ -139,6 +139,7 @@ Game::Game()
     #endif
     //Load Spritesheet
     tx.Load("romfs:/gfx/tx.t3x");
+    sprintf(highscore, "BEST: %d", highscoreInt);
     RenderD7::loadFont(font, "romfs:/font.bcfnt");
     sfx_click = std::make_unique<sound>("romfs:/click.wav", 1);
     sfx_coin = std::make_unique<sound>("romfs:/coin.wav", 2);
