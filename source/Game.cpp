@@ -197,6 +197,22 @@ void Game::Draw(void) const
             if (platforms[i].getHasCoin()) RenderD7::DrawImageFromSheet(&tx, 1, platforms[i].getCoinX(), platforms[i].getCoinY(), 0.5, 0.5);
         }
         RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
+        
+        if (d7_hHeld & KEY_TOUCH && player.isOnGround())
+        {
+            //velocityX = touch.px - mouseDownX;
+            //velocityY = touch.py - mouseDownY;
+            //RenderD7::OnScreen(Top);
+            C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
+                    mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
+                    RenderD7::Color::Hex("#000000"),
+                    d7_touch.px + (player.getX() - mouseDownX) + (player.getWidth()/2),
+                    d7_touch.py + (player.getY() - mouseDownY) + (player.getHeight()/2),
+                    RenderD7::Color::Hex("#000000"),
+                    1,
+                    1
+                );
+        }
         RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
         RenderD7::DrawTextLeft(51+3, 7, 0.9f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
         RenderD7::DrawText(10, 40, 0.7f, RenderD7::Color::Hex("#000000"), highscore, 0, 0, font);
@@ -258,7 +274,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         {
             velocityX = touch.px - mouseDownX;
             velocityY = touch.py - mouseDownY;
-            RenderD7::OnScreen(Top);
+            /*RenderD7::OnScreen(Top);
             C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
                     RenderD7::Color::Hex("#000000"),
@@ -267,7 +283,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
                     RenderD7::Color::Hex("#000000"),
                     1,
                     1
-                );
+                );*/
         }
         if (playCoinFX) 
         {
