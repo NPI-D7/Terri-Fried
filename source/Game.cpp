@@ -200,9 +200,6 @@ void Game::Draw(void) const
         
         if (d7_hHeld & KEY_TOUCH && player.isOnGround())
         {
-            //velocityX = touch.px - mouseDownX;
-            //velocityY = touch.py - mouseDownY;
-            //RenderD7::OnScreen(Top);
             C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
                     RenderD7::Color::Hex("#000000"),
@@ -214,7 +211,7 @@ void Game::Draw(void) const
                 );
         }
         RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
-        RenderD7::DrawTextLeft(51+3, 7, 0.9f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
+        RenderD7::DrawText(7, 7, 1.0f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
         RenderD7::DrawText(10, 40, 0.7f, RenderD7::Color::Hex("#000000"), highscore, 0, 0, font);
     }
 }
