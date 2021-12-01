@@ -211,7 +211,7 @@ void Game::Draw(void) const
                 );
         }
         RenderD7::DrawImageFromSheet(&tx, 5, 10, 5, 0.5, 0.5);
-        RenderD7::DrawText(7, 7, 1.0f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
+        RenderD7::DrawText(13, 7, 1.0f, RenderD7::Color::Hex("#000000"), score, 0, 0, font);
         RenderD7::DrawText(10, 40, 0.7f, RenderD7::Color::Hex("#000000"), highscore, 0, 0, font);
     }
 }
