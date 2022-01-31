@@ -271,16 +271,6 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         {
             velocityX = touch.px - mouseDownX;
             velocityY = touch.py - mouseDownY;
-            /*RenderD7::OnScreen(Top);
-            C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
-                    mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
-                    RenderD7::Color::Hex("#000000"),
-                    touch.px + (player.getX() - mouseDownX) + (player.getWidth()/2),
-                    touch.py + (player.getY() - mouseDownY) + (player.getHeight()/2),
-                    RenderD7::Color::Hex("#000000"),
-                    1,
-                    1
-                );*/
         }
         if (playCoinFX) 
         {
