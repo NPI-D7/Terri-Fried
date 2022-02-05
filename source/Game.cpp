@@ -278,5 +278,14 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
             playCoinFX = false;
         }
         if (hDown & KEY_START) RenderD7::ExitApp();
+        std::string dbgi = "DebugInfo: ";
+        dbgi += lavaY;
+        dbgi += ", ";
+        dbgi += velocityX;
+        dbgi += ", ";
+        dbgi += velocityY;
+        RenderD7::OnScreen(Bottom);
+        RenderD7::DrawText(5, 40, 0.6f, RenderD7::Color::Hex("#000000"), dbgi, 0, 0, font);
+        
     }
 }
