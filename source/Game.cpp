@@ -238,11 +238,12 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
     {
         lavaY = screenheight - 16 - sin(timer) * 5;
         timer += 0.05/2;
-        checkPlayerCollision();
-        player.updatePosition();
         for (int i = 0; i < 5; i++) {
             platforms[i].updatePosition();
         }
+        checkPlayerCollision();
+        player.updatePosition();
+        
         if (player.getY() > screenheight) {
             sfx_die->play();
             resetGame();
