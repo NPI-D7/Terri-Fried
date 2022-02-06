@@ -280,7 +280,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         if (hDown & KEY_START) RenderD7::ExitApp();
         #ifndef D_RELEASE
         std::string dbgi = "DebugInfo: ";
-        dbgi += std::to_string(lavaY);
+        dbgi += std::to_string(lavaY).substr(0, 3);
         dbgi += ", ";
         dbgi += std::to_string(velocityX);
         dbgi += ", ";
