@@ -10,7 +10,7 @@ private:
     int coinY;
     
 public:
-    Platform(int index);
+    box2d_Platform(int index);
     double getX();
     double getY();
     int getWidth();
