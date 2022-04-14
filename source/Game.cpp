@@ -250,23 +250,23 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         }
         if (hDown & KEY_TOUCH && player.isOnGround())
         {
-             sfx_click->play();
-             mouseDownX = touch.px;
-             mouseDownY = touch.py;
+            sfx_click->play();
+            mouseDownX = touch.px;
+            mouseDownY = touch.py;
         }
     
         if (hUp & KEY_TOUCH && player.isOnGround())
         {
-             if (firstTime)
-             {
-              firstTime = false;
-         }
-         else {
-             sfx_launch->play();
-             if(player.isOnPlatform()) player.setY(player.getY() - 1);
+            if (firstTime)
+            {
+                firstTime = false;
+            }
+            else {
+                sfx_launch->play();
+                if(player.isOnPlatform()) player.setY(player.getY() - 1);
              
-             player.setVelocity((double)velocityX*.16, (double)velocityY*.16);
-             } 
+                player.setVelocity((double)velocityX*.16, (double)velocityY*.16);
+            } 
         }
         if (d7_hHeld & KEY_TOUCH && player.isOnGround())
         {
