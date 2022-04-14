@@ -12,7 +12,7 @@ int main()
     while(RenderD7::MainLoop())
     {
         if (d7_hDown & KEY_START) RenderD7::ExitApp();
-        C3D_FrameEnd(0);
+        RenderD7::FrameEnd();
     }
     RenderD7::Exit::NdspFirm();
     RenderD7::Exit::Main();

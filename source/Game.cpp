@@ -13,7 +13,7 @@ int spt;
 std::string d_ver = "V.1.0";
 #endif
 #ifndef D_RELEASE
-std::string d_ver = "Beta: 0.7, Commit: ";
+std::string d_ver = "Beta: 0.8, Commit: ";
 #endif
 Platform platforms[5] = {{0}, {1}, {2}, {3}, {4}};
 Player player(platforms[0].getX() + platforms[0].getWidth()/2 - (26/2)/2, platforms[0].getY() - player.getHeight(), 26/2, 32/2);
