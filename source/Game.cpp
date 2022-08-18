@@ -248,14 +248,20 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
             sfx_die->play();
             resetGame();
         }
-        if (d7_hDown & KEY_TOUCH && player.isOnGround())
+        if ((d7_hDown & KEY_TOUCH && player.isOnGround()))
         {
             sfx_click->play();
             mouseDownX = touch.px;
             mouseDownY = touch.py;
         }
+
+        if ((d7_hHeld & KEY_TOUCH && player.isOnGround()))
+        {
+            velocityX = touch.px - mouseDownX;
+            velocityY = touch.py - mouseDownY;
+        }
     
-        if (d7_hUp & KEY_TOUCH && player.isOnGround())
+        if ((d7_hUp & KEY_TOUCH && player.isOnGround()))
         {
             if (firstTime)
             {
@@ -268,11 +274,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
                 player.setVelocity((double)velocityX*.16, (double)velocityY*.16);
             } 
         }
-        if (d7_hHeld & KEY_TOUCH && player.isOnGround())
-        {
-            velocityX = touch.px - mouseDownX;
-            velocityY = touch.py - mouseDownY;
-        }
+        
         if (playCoinFX) 
         {
             sfx_coin->play();
