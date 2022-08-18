@@ -280,17 +280,17 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         }
         if (hDown & KEY_START) RenderD7::ExitApp();
         #ifndef D_RELEASE
-        std::string dbgi = "DebugInfo: /nLavaY: ";
+        std::string dbgi = "DebugInfo: \nLavaY: ";
         dbgi += std::to_string(lavaY).substr(0, 3);
-        dbgi += "/nVelocity: ";
+        dbgi += "\nVelocity: ";
         dbgi += std::to_string(velocityX);
         dbgi += ", ";
         dbgi += std::to_string(velocityY);
-        dbgi += "/nTouchPos: ";
+        dbgi += "\nTouchPos: ";
         dbgi += std::to_string(touch.px);
         dbgi += ", ";
         dbgi += std::to_string(touch.py);
-        dbgi += "/nDownPos: ";
+        dbgi += "\nDownPos: ";
         dbgi += std::to_string(mouseDownX);
         dbgi += ", ";
         dbgi += std::to_string(mouseDownY);
