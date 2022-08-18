@@ -10,7 +10,7 @@ int velocityY;
 
 int spt;
 #ifdef D_RELEASE
-std::string d_ver = "V.1.0";
+std::string d_ver = "V1.0";
 #endif
 #ifndef D_RELEASE
 std::string d_ver = "Beta: 0.8, Commit: ";
