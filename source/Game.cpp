@@ -300,6 +300,6 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         RenderD7::DrawText(5, 40, 0.6f, RenderD7::Color::Hex("#000000"), dbgi, 0, 0, font);
         #endif
     }
-        velocityX = touch.px - mouseDownX;
-        velocityY = touch.py - mouseDownY;
+        //velocityX = touch.px - mouseDownX;
+        //velocityY = touch.py - mouseDownY;
 }
