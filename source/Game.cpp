@@ -297,11 +297,11 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         dbgi += ", ";
         dbgi += std::to_string(mouseDownY);
         dbgi += "\nU: ";
-        dbgi += std::to_string(hUp);
+        dbgi += std::to_string(hidKeysUp() ? 1 : 0);
         dbgi += " D: ";
-        dbgi += std::to_string(hDown);
+        dbgi += std::to_string(hidKeysDown() ? 1 : 0);
         dbgi += " H: ";
-        dbgi += std::to_string(hHeld);
+        dbgi += std::to_string(hidKeysHeld() ? 1 : 0);
         RenderD7::OnScreen(Bottom);
         RenderD7::DrawText(5, 40, 0.6f, RenderD7::Color::Hex("#000000"), dbgi, 0, 0, font);
         #endif
