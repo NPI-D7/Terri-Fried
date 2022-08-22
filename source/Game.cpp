@@ -198,7 +198,7 @@ void Game::Draw(void) const
         }
         RenderD7::DrawImageFromSheet(&tx, 2, 0, lavaY, 0.5, 0.5);
         
-        if (d7_hHeld & KEY_TOUCH && player.isOnGround())
+        if (hidKeysHeld() & KEY_TOUCH && player.isOnGround())
         {
             C2D_DrawLine(mouseDownX + (player.getX() - mouseDownX) + (player.getWidth()/2),
                     mouseDownY + (player.getY() - mouseDownY) + (player.getHeight()/2),
@@ -248,20 +248,20 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
             sfx_die->play();
             resetGame();
         }
-        if ((hDown & KEY_TOUCH && player.isOnGround()))
+        if ((hidKeysDown() & KEY_TOUCH && player.isOnGround()))
         {
             sfx_click->play();
             mouseDownX = touch.px;
             mouseDownY = touch.py;
         }
 
-        if ((hHeld & KEY_TOUCH && player.isOnGround()))
+        if ((hidKeysHeld() & KEY_TOUCH && player.isOnGround()))
         {
             velocityX = touch.px - mouseDownX;
             velocityY = touch.py - mouseDownY;
         }
     
-        if ((hUp & KEY_TOUCH && player.isOnGround()))
+        if ((hidKeysUp() & KEY_TOUCH && player.isOnGround()))
         {
             if (firstTime)
             {
@@ -303,7 +303,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         dbgi += " H: ";
         dbgi += std::to_string(hidKeysHeld() ? 1 : 0);
         RenderD7::OnScreen(Bottom);
-        RenderD7::DrawText(5, 40, 0.6f, RenderD7::Color::Hex("#000000"), dbgi, 0, 0, font);
+        RenderD7::DrawText(5, 50, 0.6f, RenderD7::Color::Hex("#000000"), dbgi, 0, 0, font);
         #endif
     }
         //velocityX = touch.px - mouseDownX;
