@@ -8,6 +8,8 @@ const double gravity = 1;
 int velocityX;
 int velocityY;
 
+bool debugmode = false;
+
 int spt;
 #ifdef D_RELEASE
 std::string d_ver = "V1.0";
@@ -85,7 +87,7 @@ void addScore(int amount) {
     else
         sprintf(score, "%d", scoreInt);
     
-    if (scoreInt > highscoreInt) {
+    if (scoreInt > highscoreInt && < 1000) {
         highscoreInt = scoreInt;
         sprintf(highscore, "BEST: %d", highscoreInt);
     }
@@ -166,7 +168,7 @@ void Game::Draw(void) const
         RenderD7::OnScreen(Top);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
         RenderD7::DrawImageFromSheet(&tx, 6, 190, 104, 0.5, 0.5);
-        RenderD7::DrawTextCentered(0, 120, 0.6f, RenderD7::Color::Hex("#000000"), "POLYMARS, TobiD7", 400, 0, font);
+        RenderD7::DrawTextCentered(0, 120, 0.6f, RenderD7::Color::Hex("#000000"), "POLYMARS, NPI-D7", 400, 0, font);
     }
     if (titlescreen && spt>120)
     {
@@ -186,7 +188,7 @@ void Game::Draw(void) const
         RenderD7::DrawTextCentered(0, 220, 0.6f, RenderD7::Color::Hex("#000000"), "Press Start to Exit.", 320, 0, font);
         RenderD7::DrawText(5, 1, 0.6f, RenderD7::Color::Hex("#000000"), d_ver, 0, 0, font);
         if (! RenderD7::IsNdspInit()){
-        RenderD7::DrawText(5, 30, 0.6f, RenderD7::Color::Hex("#000000"), "SoundEngine failed!", 0, 0, font);
+            RenderD7::DrawText(5, 30, 0.6f, RenderD7::Color::Hex("#000000"), "SoundEngine failed!/n<<sdmc:/3ds/dspfirm.cdc>> not found", 0, 0, font);
         }
         RenderD7::OnScreen(Top);
         RenderD7::DrawRect(0, 0, screenwidth, screenheight, RenderD7::Color::Hex("#ECE2DE"));
@@ -281,7 +283,7 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
             playCoinFX = false;
         }
         if (hDown & KEY_START) RenderD7::ExitApp();
-        #ifndef D_RELEASE
+        if (debugmode){
         std::string dbgi = "DebugInfo: \nLavaY: ";
         dbgi += std::to_string(lavaY).substr(0, 3);
         dbgi += "\nVelocity: ";
@@ -304,8 +306,6 @@ void Game::Logic(u32 hDown, u32 hHeld, u32 hUp, touchPosition touch)
         dbgi += std::to_string(hidKeysHeld() ? 1 : 0);
         RenderD7::OnScreen(Bottom);
         RenderD7::DrawText(5, 50, 0.6f, RenderD7::Color::Hex("#000000"), dbgi, 0, 0, font);
-        #endif
+        }
     }
-        //velocityX = touch.px - mouseDownX;
-        //velocityY = touch.py - mouseDownY;
 }
